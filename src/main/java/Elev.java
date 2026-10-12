@@ -1,0 +1,47 @@
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
+public class Elev {
+    private String nume;
+    private Gen gen;
+    private Set<String> activitati;
+
+    public Elev(String nume, Gen gen) {
+        this.nume = nume;
+        this.gen = gen;
+        this.activitati = new HashSet<>();
+    }
+
+    public String getNume() { return nume; }
+    public Gen getGen() { return gen; }
+    public Set<String> getActivitati() { return activitati; }
+
+
+    public void adaugaActivitate(String numeActivitate) {
+        activitati.add(numeActivitate);
+    }
+
+    public void eliminaActivitate(String numeActivitate) {
+        activitati.remove(numeActivitate);
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Elev elev = (Elev) o;
+        return Objects.equals(nume, elev.nume) && gen == elev.gen;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nume, gen);
+    }
+
+    @Override
+    public String toString() {
+        return nume;
+    }
+}
